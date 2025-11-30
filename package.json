@@ -1,7 +1,7 @@
 {
   "name": "vite-react-mui-v7-bplate",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier-check": "npx prettier . --check",
-    "prettier-format": "npx prettier . --write"
+    "prettier-format": "npx prettier . --write",
+    "docker:build": "docker compose up --build --no-start",
+    "docker:up": "docker compose up",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -38,6 +41,9 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
     "vite-plugin-compression2": "^2.3.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.39.0"
   },
   "prettier": {
     "useTabs": false,

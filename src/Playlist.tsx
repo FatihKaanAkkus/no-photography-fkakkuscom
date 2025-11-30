@@ -82,7 +82,7 @@ function PlaylistCard({
 
 const containerVariants = {
   hidden: {},
-  shown: { transition: { staggerChildren: 0.1 } },
+  shown: { transition: { staggerChildren: 0.05 } },
 };
 
 const itemVariants = {

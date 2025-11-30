@@ -5,7 +5,7 @@ import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
 import { Route, Switch, useLocation } from 'wouter';
-import { imgGroup1, imgGroup2 } from './data';
+import { imgGroup1, imgGroup2, imgGroup3 } from './data';
 import {
   ThemeProvider,
   createTheme,
@@ -17,9 +17,7 @@ import Typography from '@mui/material/Typography';
 import GalleryGroup from './GalleryGroup';
 import Playlist from './Playlist';
 import GalleryModal from './GalleryModal';
-
-// breakpoints [px]: 600, 900, 1200, 1536, 2000-max; -
-// image srcset [px]: 300, 450, 600, 768, 1000-max; 2000 (original in modal)
+import { motion } from 'motion/react';
 
 let theme = createTheme({
   defaultColorScheme: 'dark',
@@ -41,6 +39,9 @@ export default function App() {
           <Grid size={{ xs: 12, lg: 10 }} offset={{ lg: 2 }}>
             <Typography
               variant="h1"
+              component={motion.h1}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               sx={{ fontWeight: 700, mt: 6, mb: { xs: 6, lg: 8 } }}
             >
               No Photography
@@ -56,12 +57,20 @@ export default function App() {
             <Box sx={{ mb: 4, position: { lg: 'sticky' }, top: 32 }}>
               <Typography
                 variant="h6"
-                component="div"
+                component={motion.div}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 sx={{ fontWeight: 600, mb: 2 }}
               >
                 About Me
               </Typography>
-              <Typography variant="caption" component="p" sx={{ mb: 2 }}>
+              <Typography
+                variant="caption"
+                component={motion.p}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                sx={{ mb: 2 }}
+              >
                 These photos are simply moments I’ve captured—nothing special,
                 nothing planned, nothing focused on. Just light, shadow, and
                 scenes from everyday life collected along the way, on the
@@ -76,17 +85,28 @@ export default function App() {
             <Box sx={{ mb: { xs: 8, lg: 12 } }}>
               <GalleryGroup images={imgGroup2} />
             </Box>
+            <Box sx={{ mb: { xs: 8, lg: 12 } }}>
+              <GalleryGroup images={imgGroup3} />
+            </Box>
           </Grid>
           <Grid size={{ xs: 12, sm: 10, md: 6, lg: 3, xl: 2 }}>
             <Box sx={{ mb: 4 }}>
               <Typography
                 variant="h6"
-                component="div"
+                component={motion.div}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 sx={{ fontWeight: 600, mb: 2 }}
               >
                 Playlist n/a
               </Typography>
-              <Typography variant="caption" component="p" sx={{ mb: 2 }}>
+              <Typography
+                variant="caption"
+                component={motion.p}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                sx={{ mb: 2 }}
+              >
                 This playlist is not available.
               </Typography>
               <Playlist />
@@ -95,7 +115,9 @@ export default function App() {
         </Grid>
         <Typography
           variant="caption"
-          component="div"
+          component={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           sx={{ textAlign: 'center', mb: 2 }}
         >
           Photos by Fatih Kaan Akkuş. All rights reserved.

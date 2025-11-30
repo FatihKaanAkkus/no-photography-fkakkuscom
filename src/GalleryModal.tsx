@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Backdrop from '@mui/material/Backdrop';
 import { motion } from 'motion/react';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -38,19 +39,15 @@ export default function GalleryModal() {
 
   return (
     <Modal
-      sx={(theme) => ({
-        zIndex: theme.zIndex.drawer + 1,
+      sx={{
         display: 'flex',
         alignItems: 'safe center',
         justifyContent: 'safe center',
-      })}
-      slotProps={{
-        backdrop: {
-          sx: { backgroundColor: 'rgba(0, 0, 0, 0.95)' },
-          onClick: () => navigate('/'),
-        },
       }}
-      open={true}
+      slotProps={{
+        backdrop: { sx: { backgroundColor: 'rgba(0, 0, 0, 0.95)' } },
+      }}
+      open
       onClose={() => navigate('/')}
       role="dialog"
       aria-labelledby="image-modal-title"
@@ -72,6 +69,13 @@ export default function GalleryModal() {
         }}
         role="main"
       >
+        {/* Invisible Backdrop to close modal on click outside content */}
+        <Backdrop
+          sx={{ backgroundColor: 'transparent' }}
+          open
+          onClick={() => navigate('/')}
+        />
+
         {/* Close Button */}
         {!zoomed && (
           <motion.div
@@ -99,6 +103,7 @@ export default function GalleryModal() {
         {/* Wrapper groups image and sidebar */}
         <Box
           sx={{
+            zIndex: 2,
             display: 'flex',
             maxWidth: '100%',
             maxHeight: '100%',
@@ -145,6 +150,7 @@ export default function GalleryModal() {
             <Box
               component="aside"
               sx={{
+                zIndex: 1,
                 width: { xs: '100%', xl: 270 },
                 p: 4,
                 overflowY: { xl: 'auto' },

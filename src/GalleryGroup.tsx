@@ -16,7 +16,7 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
     <ImageList
       variant="masonry"
       cols={md ? 4 : sm ? 3 : 2}
-      gap={16}
+      gap={md ? 12 : sm ? 10 : 8}
       sx={{ mt: 0, p: { xs: 0, lg: 0.5 }, overflow: 'visible' }}
       component={motion.div}
       variants={containerVariants}
@@ -37,10 +37,10 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
           viewport={{ once: true }}
           key={item.slug}
           style={{ position: 'relative' }}
-          href={`/p/${item.title.toLowerCase().replaceAll(' ', '-')}`}
+          href={`/p/${item.slug}`}
           onClick={(e) => {
             e.preventDefault();
-            navigate(`/p/${item.title.toLowerCase().replaceAll(' ', '-')}`);
+            navigate(`/p/${item.slug}`);
           }}
           role="link"
         >
@@ -64,7 +64,7 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
 
 const containerVariants = {
   hidden: {},
-  shown: { transition: { staggerChildren: 0.1 } },
+  shown: { transition: { staggerChildren: 0.05 } },
 };
 
 const itemVariants = {
