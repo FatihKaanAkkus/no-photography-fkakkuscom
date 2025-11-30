@@ -39,7 +39,10 @@ export default function App() {
       <Box sx={{ p: { xs: 2, md: 3, lg: 4 } }} maxWidth={2000} mx="auto">
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, lg: 10 }} offset={{ lg: 2 }}>
-            <Typography variant="h1" sx={{ fontWeight: 700, my: 5 }}>
+            <Typography
+              variant="h1"
+              sx={{ fontWeight: 700, mt: 6, mb: { xs: 6, lg: 8 } }}
+            >
               No Photography
             </Typography>
           </Grid>
@@ -51,7 +54,11 @@ export default function App() {
         >
           <Grid size={{ xs: 12, sm: 7, lg: 2 }}>
             <Box sx={{ mb: 4, position: { lg: 'sticky' }, top: 32 }}>
-              <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ fontWeight: 600, mb: 2 }}
+              >
                 About Me
               </Typography>
               <Typography variant="caption" component="p" sx={{ mb: 2 }}>
@@ -63,16 +70,20 @@ export default function App() {
             </Box>
           </Grid>
           <Grid size={{ xs: 12, lg: 7, xl: 8 }}>
-            <Box sx={{ mb: 8 }}>
+            <Box sx={{ mb: { xs: 8, lg: 12 } }}>
               <GalleryGroup images={imgGroup1} />
             </Box>
-            <Box sx={{ mb: 8 }}>
+            <Box sx={{ mb: { xs: 8, lg: 12 } }}>
               <GalleryGroup images={imgGroup2} />
             </Box>
           </Grid>
           <Grid size={{ xs: 12, sm: 10, md: 6, lg: 3, xl: 2 }}>
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ fontWeight: 600, mb: 2 }}
+              >
                 Playlist n/a
               </Typography>
               <Typography variant="caption" component="p" sx={{ mb: 2 }}>

@@ -47,10 +47,10 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
           <img
             srcSet={
               item.sizes
-                ? `${item.sizes.xs} 300w, ${item.sizes.sm} 450w, ${item.sizes.sm} 600w, ${item.sizes.sm} 768w, ${item.sizes.sm} 1000w, ${item.sizes.sm} 2000w`
+                ? `${item.sizes.xs} 300w, ${item.sizes.xs} 450w, ${item.sizes.xs} 600w, ${item.sizes.xs} 768w, ${item.sizes.xs} 1000w, ${item.sizes.xs} 2000w`
                 : undefined
             }
-            src={item.sizes ? item.sizes.sm : item.uri}
+            src={item.sizes ? item.sizes.xs : item.uri}
             sizes="(max-width: 300px) 300px, (max-width: 600px) 450px, (max-width: 900px) 600px, (max-width: 1200px) 768px, (max-width: 1536px) 1000px, 2000px"
             alt={item.title}
             loading="lazy"

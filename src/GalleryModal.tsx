@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { useLocation, useParams } from 'wouter';
 import { slugToImageData, type ImageItem } from './data';
 import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { motion } from 'motion/react';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -30,54 +33,129 @@ export default function GalleryModal() {
     : entry.uri;
 
   const sizes = zoomed
-    ? '2000px'
-    : '(max-width: 300px) 300px, (max-width: 600px) 450px, (max-width: 900px) 600px, (max-width: 1200px) 768px, (max-width: 1536px) 1000px, 2000px';
+    ? '100vw'
+    : '(max-width: 600px) 100vw, (max-width: 900px) 70vw, 75vw';
 
   return (
     <Modal
       sx={(theme) => ({
         zIndex: theme.zIndex.drawer + 1,
-        p: { xs: 0 },
         display: 'flex',
         alignItems: 'safe center',
         justifyContent: 'safe center',
-        overflowY: 'scroll',
       })}
       slotProps={{
         backdrop: {
-          sx: { backgroundColor: 'rgba(0, 0, 0, 0.9)' },
+          sx: { backgroundColor: 'rgba(0, 0, 0, 0.95)' },
           onClick: () => navigate('/'),
         },
       }}
       open={true}
       onClose={() => navigate('/')}
+      role="dialog"
+      aria-labelledby="image-modal-title"
     >
-      <div
-        style={{
+      <Box
+        component="article"
+        sx={{
           position: 'relative',
+          width: '100%',
+          height: '100%',
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+          display: 'flex',
+          alignItems: { xs: 'safe center', xl: 'safe center' },
+          justifyContent: { xs: 'safe center', xl: 'safe center' },
+          overflow: { xs: 'auto' },
+          pt: { xs: '3rem', xl: '0' },
           outline: 'none',
-          minWidth: 120,
-          minHeight: 120,
         }}
+        role="main"
       >
-        <img
-          sizes={sizes}
-          srcSet={entry.sizes ? srcSet : undefined}
-          src={entry.sizes ? entry.sizes.full : entry.uri}
-          alt={entry.title}
-          loading="eager"
-          style={{
-            display: 'block',
-            maxHeight: zoomed ? 'none' : '80dvh',
-            maxWidth: zoomed ? '100%' : '80dvw',
-            cursor: zoomed ? 'zoom-out' : 'zoom-in',
-            borderRadius: zoomed ? 0 : '0.5rem',
+        {/* Close Button */}
+        {!zoomed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            style={{
+              position: 'absolute',
+              top: '0.5rem',
+              left: '0.5rem',
+              zIndex: 10,
+            }}
+          >
+            <IconButton
+              size="small"
+              onClick={() => navigate('/')}
+              sx={overlayButtonSx}
+              aria-label="Close image modal"
+            >
+              <CloseIcon />
+            </IconButton>
+          </motion.div>
+        )}
+
+        {/* Wrapper groups image and sidebar */}
+        <Box
+          sx={{
+            display: 'flex',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            flexDirection: { xs: 'column', xl: 'row' },
+            alignItems: 'safe center',
           }}
-          tabIndex={0}
-          onClick={() => setZoomed(!zoomed)}
-        />
-        {!zoomed && <ControlOverlay entry={entry} />}
-      </div>
+        >
+          {/* Image Container */}
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'safe center',
+              justifyContent: 'safe center',
+              maxHeight: '100vh',
+              flex: '0 0 auto',
+              maxWidth: '100%',
+            }}
+          >
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              sizes={sizes}
+              srcSet={entry.sizes ? srcSet : undefined}
+              src={entry.sizes ? entry.sizes.full : entry.uri}
+              alt={entry.title}
+              loading="eager"
+              style={{
+                cursor: zoomed ? 'zoom-out' : 'zoom-in',
+                maxWidth: zoomed ? 'none' : '100%',
+                maxHeight: zoomed ? 'none' : 'calc(100vh - 6rem)',
+                width: zoomed ? '100%' : 'auto',
+                height: zoomed ? 'auto' : 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+              tabIndex={0}
+              onClick={() => setZoomed(!zoomed)}
+            />
+          </Box>
+
+          {/* Sidebar */}
+          {!zoomed && (
+            <Box
+              component="aside"
+              sx={{
+                width: { xs: '100%', xl: 270 },
+                p: 4,
+                overflowY: { xl: 'auto' },
+                maxHeight: '100vh',
+              }}
+            >
+              <ImageDetails entry={entry} />
+            </Box>
+          )}
+        </Box>
+      </Box>
     </Modal>
   );
 }
@@ -88,59 +166,106 @@ const overlayButtonSx: SxProps<Theme> = {
   color: 'white',
 };
 
-function ControlOverlay({ entry }: { entry: ImageItem }) {
-  const [, navigate] = useLocation();
-
+function ImageDetails({ entry }: { entry: ImageItem }) {
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.15 }}
-        style={{ position: 'absolute', top: 8, left: 8 }}
-      >
-        <IconButton
-          size="small"
-          onClick={() => navigate('/')}
-          sx={overlayButtonSx}
+    <Box
+      component={motion.div}
+      variants={chipContainerVariants}
+      initial="hidden"
+      animate="shown"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        height: '100%',
+      }}
+    >
+      <Stack spacing={1} justifyContent="flex-start">
+        <Typography
+          id="image-modal-title"
+          component={motion.div}
+          variants={chipVariants}
+          variant="h4"
+          sx={{ fontWeight: 300, color: 'text.secondary' }}
         >
-          <CloseIcon />
-        </IconButton>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.35 }}
-        style={{ position: 'absolute', bottom: 8, right: 8 }}
-      >
-        <IconButton
-          size="small"
-          href={entry.uri}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={overlayButtonSx}
-        >
-          <IconArrowOutward />
-        </IconButton>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.25 }}
-        style={{ position: 'absolute', bottom: 8, left: 8 }}
-      >
-        {entry.location && (
-          <Chip
-            variant="filled"
-            label={entry.location}
-            icon={<IconPlace fontSize="small" />}
-            sx={overlayButtonSx}
-            slotProps={{
-              label: { sx: { pl: 1 } },
-            }}
-          />
+          {entry.title}
+        </Typography>
+      </Stack>
+      <Stack spacing={1} justifyContent="flex-start">
+        {entry.exif?.camera && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.camera} />
+          </motion.div>
         )}
-      </motion.div>
-    </>
+        {entry.exif?.lens && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.lens} />
+          </motion.div>
+        )}
+        {entry.exif?.focalLength && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.focalLength} />
+          </motion.div>
+        )}
+        {entry.exif?.aperture && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.aperture} />
+          </motion.div>
+        )}
+        {entry.exif?.exposureTime && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.exposureTime} />
+          </motion.div>
+        )}
+        {entry.exif?.exposureComp && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.exposureComp} />
+          </motion.div>
+        )}
+        {entry.exif?.iso && (
+          <motion.div variants={chipVariants}>
+            <Chip variant="filled" label={entry.exif?.iso} />
+          </motion.div>
+        )}
+        {entry.location && (
+          <motion.div variants={chipVariants}>
+            <Chip
+              variant="filled"
+              label={entry.location}
+              icon={<IconPlace fontSize="small" />}
+              slotProps={{
+                label: { sx: { pl: 1 } },
+              }}
+            />
+          </motion.div>
+        )}
+      </Stack>
+      <Stack direction="row" justifyContent="flex-start" sx={{ mt: 'auto' }}>
+        <motion.div variants={chipVariants}>
+          <IconButton
+            size="small"
+            href={entry.uri}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={overlayButtonSx}
+            aria-label="Open full resolution image in new tab"
+          >
+            <IconArrowOutward />
+          </IconButton>
+        </motion.div>
+      </Stack>
+    </Box>
   );
 }
+
+const chipContainerVariants = {
+  hidden: {},
+  shown: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 },
+  },
+};
+
+const chipVariants = {
+  hidden: { opacity: 0, y: 10 },
+  shown: { opacity: 1, y: 0 },
+};
