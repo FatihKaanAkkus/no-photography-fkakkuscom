@@ -6,6 +6,8 @@ import { motion } from 'motion/react';
 import { type ImageItem } from './data';
 import { useLocation } from 'wouter';
 
+const kSize = 300 / 2000; // this component uses xs (300px) vs full (2000px) sizes
+
 export default function GalleryGroup({ images }: { images: ImageItem[] }) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
@@ -55,6 +57,10 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
             alt={item.title}
             loading="lazy"
             style={{ borderRadius: theme.spacing(1) }}
+            width={item.size ? Math.round(kSize * item.size.width) : undefined}
+            height={
+              item.size ? Math.round(kSize * item.size.height) : undefined
+            }
           />
         </ImageListItem>
       ))}

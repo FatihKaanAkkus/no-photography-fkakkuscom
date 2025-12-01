@@ -22,6 +22,7 @@ export type ImageItem = {
   slug: string;
   uri: string;
   sizes?: ImageSizes;
+  size?: { width: number; height: number; aspect: number };
   location?: string;
   exif?: ExifData;
   icons?: string[];
@@ -46,7 +47,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/warmth-lost-its-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/warmth-lost-its-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -56,6 +57,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '127mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Tastes Lost Their Meaning',
@@ -69,7 +71,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tastes-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tastes-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -79,6 +81,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '+0.3 EV',
       focalLength: '70mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Waves Lost Their Meaning',
@@ -92,7 +95,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/waves-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/waves-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -102,6 +105,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '+0.3 EV',
       focalLength: '114 mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Smells Lost Their Meaning',
@@ -115,7 +119,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/smells-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/smells-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -125,6 +129,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '+0.3 EV',
       focalLength: '206mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Sounds Lost Their Meaning',
@@ -138,7 +143,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sounds-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sounds-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3555, aspect: Math.floor(2000 / 3555) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -148,6 +153,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '70mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Colors Lost Their Meaning',
@@ -161,7 +167,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colors-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colors-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -171,6 +177,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '70mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Hobbies Lost Their Meaning',
@@ -184,7 +191,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/hobbies-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/hobbies-lost-their-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -194,6 +201,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '199mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Moving Lost Its Meaning',
@@ -207,7 +215,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/moving-lost-its-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/moving-lost-its-meaning.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -217,6 +225,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '300mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Clock Tower Bleeds',
@@ -230,7 +239,7 @@ export const imgGroup1: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/clock-tower-bleeds-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/clock-tower-bleeds.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -240,6 +249,7 @@ export const imgGroup1: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '26mm',
     },
+    location: 'Istanbul, Turkey',
   },
 ];
 
@@ -256,7 +266,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/crane-sunset-skyline-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/crane-sunset-skyline.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -266,6 +276,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '-1.3 EV',
       focalLength: '185mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Antique Shop with Red Door',
@@ -279,7 +290,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-with-red-door-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-with-red-door.jpg?ver=1',
     },
-    location: 'Ayvalık, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -289,6 +300,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '70mm',
     },
+    location: 'Ayvalık, Turkey',
   },
   {
     title: 'Antique Shop Entrance with Red Door',
@@ -302,7 +314,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-entrance-with-red-door-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-entrance-with-red-door.jpg?ver=1',
     },
-    location: 'Ayvalık, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -312,6 +324,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '70mm',
     },
+    location: 'Ayvalık, Turkey',
   },
   {
     title: 'Old Soda Factory in Narrow Street',
@@ -325,7 +338,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-soda-factory-in-narrow-street-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-soda-factory-in-narrow-street.jpg?ver=1',
     },
-    location: 'Ayvalık, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -335,6 +348,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '171mm',
     },
+    location: 'Ayvalık, Turkey',
   },
   {
     title: 'Rafts in a Valley',
@@ -348,7 +362,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/rafts-in-a-valley-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/rafts-in-a-valley.jpg?ver=1',
     },
-    location: 'Skopje, North Macedonia',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -358,6 +372,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '+0.7 EV',
       focalLength: '20mm',
     },
+    location: 'Skopje, North Macedonia',
     icons: ['favorite'],
   },
   {
@@ -372,7 +387,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/lake-by-the-mountains-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/lake-by-the-mountains.jpg?ver=1',
     },
-    location: 'Ohrid, North Macedonia',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -382,6 +397,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '+0.7 EV',
       focalLength: '55mm',
     },
+    location: 'Ohrid, North Macedonia',
     icons: ['favorite'],
   },
   {
@@ -396,7 +412,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/raft-on-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/raft-on-the-mountain-lake.jpg?ver=1',
     },
-    location: 'Ohrid, North Macedonia',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -406,6 +422,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '+0.3 EV',
       focalLength: '34mm',
     },
+    location: 'Ohrid, North Macedonia',
   },
   {
     title: 'Church by the Mountain Lake',
@@ -419,7 +436,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-by-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-by-the-mountain-lake.jpg?ver=1',
     },
-    location: 'Ohrid, North Macedonia',
+    size: { width: 2000, height: 2666, aspect: Math.floor(2000 / 2666) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -429,6 +446,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '+0.3 EV',
       focalLength: '32mm',
     },
+    location: 'Ohrid, North Macedonia',
   },
   {
     title: 'Boardwalk by the Mountain Lake',
@@ -442,7 +460,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/boardwalk-by-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/boardwalk-by-the-mountain-lake.jpg?ver=1',
     },
-    location: 'Ohrid, North Macedonia',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -452,6 +470,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '-0.7 EV',
       focalLength: '34mm',
     },
+    location: 'Ohrid, North Macedonia',
     icons: ['favorite'],
   },
   {
@@ -466,7 +485,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlight-through-stained-glass-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlight-through-stained-glass.jpg?ver=1',
     },
-    location: 'Ayvalık, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -476,6 +495,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '-2 EV',
       focalLength: '22mm',
     },
+    location: 'Ayvalık, Turkey',
   },
   {
     title: 'Two Ducks Preening',
@@ -489,7 +509,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/two-ducks-preening-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/two-ducks-preening.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 1600, aspect: Math.floor(2000 / 1600) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -499,6 +519,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '300mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Sunset Horizon Over Distance',
@@ -512,7 +533,7 @@ export const imgGroup2: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunset-horizon-over-distance-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunset-horizon-over-distance.jpg?ver=1',
     },
-    location: 'Bodrum, Turkey',
+    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -522,6 +543,7 @@ export const imgGroup2: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '70mm',
     },
+    location: 'Bodrum, Turkey',
   },
 ];
 
@@ -538,7 +560,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-rails-split-four-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-rails-split-four.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -548,6 +570,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '-0.7 EV',
       focalLength: '26mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Train Clock in Station',
@@ -561,7 +584,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-clock-in-station-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-clock-in-station.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -571,6 +594,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '-0.3 EV',
       focalLength: '18mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Old Town Colors',
@@ -584,7 +608,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-town-colors-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-town-colors.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -594,6 +618,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '44mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Church Between Old Houses',
@@ -607,7 +632,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-between-old-houses-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-between-old-houses.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -617,6 +642,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '39mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Red Ferrari New Year’s',
@@ -630,7 +656,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-ferrari-new-years-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-ferrari-new-years.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 2666, aspect: Math.floor(2000 / 2666) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -640,6 +666,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '-1.3 EV',
       focalLength: '55mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'New Year’s Tree at Night',
@@ -653,7 +680,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/new-years-tree-at-night-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/new-years-tree-at-night.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -663,6 +690,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '-1.3 EV',
       focalLength: '34mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Colorful Dove by the Window',
@@ -676,7 +704,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colorful-dove-by-the-window-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colorful-dove-by-the-window.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -686,6 +714,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '55mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Sunlit Cat Through Grass',
@@ -699,7 +728,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlit-cat-through-grass-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlit-cat-through-grass.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -709,6 +738,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '48mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Galata Vibes From Tower',
@@ -722,7 +752,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/galata-vibes-from-tower-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/galata-vibes-from-tower.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -732,6 +762,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '41mm',
     },
+    location: 'Istanbul, Turkey',
   },
   {
     title: 'Drip Coffee by the Plant',
@@ -745,7 +776,7 @@ export const imgGroup3: ImageItem[] = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/drip-coffee-by-the-plant-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/drip-coffee-by-the-plant.jpg?ver=1',
     },
-    location: 'Istanbul, Turkey',
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -755,6 +786,7 @@ export const imgGroup3: ImageItem[] = [
       exposureComp: '0 EV',
       focalLength: '55mm',
     },
+    location: 'Istanbul, Turkey',
   },
 ];
 

@@ -61,10 +61,10 @@ export default function GalleryModal() {
           maxWidth: '100vw',
           maxHeight: '100vh',
           display: 'flex',
-          alignItems: { xs: 'safe center', xl: 'safe center' },
-          justifyContent: { xs: 'safe center', xl: 'safe center' },
+          alignItems: { xs: 'safe center', lg: 'safe center' },
+          justifyContent: { xs: 'safe center', lg: 'safe center' },
           overflow: { xs: 'auto' },
-          pt: { xs: '3rem', xl: '0' },
+          pt: { xs: '3rem', lg: '0' },
           outline: 'none',
         }}
         role="main"
@@ -107,7 +107,7 @@ export default function GalleryModal() {
             display: 'flex',
             maxWidth: '100%',
             maxHeight: '100%',
-            flexDirection: { xs: 'column', xl: 'row' },
+            flexDirection: { xs: 'column', lg: 'row' },
             alignItems: 'safe center',
           }}
         >
@@ -131,6 +131,8 @@ export default function GalleryModal() {
               src={entry.sizes ? entry.sizes.full : entry.uri}
               alt={entry.title}
               loading="eager"
+              width={entry.size ? entry.size.width : undefined}
+              height={entry.size ? entry.size.height : undefined}
               style={{
                 cursor: zoomed ? 'zoom-out' : 'zoom-in',
                 maxWidth: zoomed ? 'none' : '100%',
@@ -151,9 +153,9 @@ export default function GalleryModal() {
               component="aside"
               sx={{
                 zIndex: 1,
-                width: { xs: '100%', xl: 270 },
+                width: { xs: '100%', lg: 270 },
                 p: 4,
-                overflowY: { xl: 'auto' },
+                overflowY: { lg: 'auto' },
                 maxHeight: '100vh',
               }}
             >
