@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import Masonry from '@mui/lab/Masonry';
 import { motion } from 'motion/react';
 import { type ImageItem } from './data';
 import { useLocation } from 'wouter';
@@ -15,11 +15,10 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
   const [, navigate] = useLocation();
 
   return (
-    <ImageList
-      variant="masonry"
-      cols={md ? 4 : sm ? 3 : 2}
-      gap={md ? 12 : sm ? 10 : 8}
-      sx={{ mt: 0, p: { xs: 0, lg: 0.5 }, overflow: 'visible' }}
+    <Masonry
+      columns={md ? 4 : sm ? 3 : 2}
+      spacing={md ? 1.5 : sm ? 1.25 : 1}
+      sx={{ mt: 0, overflow: 'visible' }}
       component={motion.div}
       variants={containerVariants}
       initial="hidden"
@@ -64,7 +63,7 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
           />
         </ImageListItem>
       ))}
-    </ImageList>
+    </Masonry>
   );
 }
 
