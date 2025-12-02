@@ -1,0 +1,21 @@
+.popover {
+  z-index: 99998;
+  will-change: transform;
+  contain: layout;
+  width: auto;
+  height: auto;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  pointer-events: none;
+  transform-origin: 0% 0% 0px;
+}
+
+.popover-text {
+  margin: 0;
+  padding: 0.35rem;
+  background-color: rgba(0, 0, 0, 0.66);
+  color: #fff;
+  line-height: 1;
+  border-radius: 0.35rem;
+}

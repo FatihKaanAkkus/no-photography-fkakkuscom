@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -5,6 +6,7 @@ import Masonry from '@mui/lab/Masonry';
 import { motion } from 'motion/react';
 import { type ImageItem } from './data';
 import { useLocation } from 'wouter';
+import { CursorContext } from './context-store';
 
 const kSize = 300 / 2000; // this component uses xs (300px) vs full (2000px) sizes
 
@@ -13,6 +15,8 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const [, navigate] = useLocation();
+
+  const ctx = useContext(CursorContext);
 
   return (
     <Masonry
@@ -43,6 +47,8 @@ export default function GalleryGroup({ images }: { images: ImageItem[] }) {
             e.preventDefault();
             navigate(`/p/${item.slug}`);
           }}
+          onMouseOver={md ? () => ctx.updateText(item.title) : undefined}
+          onMouseLeave={() => ctx.updateText(null)}
           role="link"
         >
           <img

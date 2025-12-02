@@ -5,7 +5,6 @@ import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
 import { Route, Switch, useLocation } from 'wouter';
-import { imgGroup1, imgGroup2 } from './data';
 import {
   ThemeProvider,
   createTheme,
@@ -14,9 +13,9 @@ import {
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import GalleryGroup from './GalleryGroup';
 import Playlist from './Playlist';
 import GalleryModal from './GalleryModal';
+import Gallery from './Gallery';
 import { motion } from 'motion/react';
 
 let theme = createTheme({
@@ -79,12 +78,7 @@ export default function App() {
             </Box>
           </Grid>
           <Grid size={{ xs: 12, lg: 7, xl: 8 }}>
-            <Box sx={{ mb: { xs: 8, lg: 12 } }}>
-              <GalleryGroup images={imgGroup1} />
-            </Box>
-            <Box sx={{ mb: { xs: 8, lg: 12 } }}>
-              <GalleryGroup images={imgGroup2} />
-            </Box>
+            <Gallery />
           </Grid>
           <Grid size={{ xs: 12, sm: 10, md: 6, lg: 3, xl: 2 }}>
             <Box sx={{ mb: 4 }}>

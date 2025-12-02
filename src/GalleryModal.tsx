@@ -64,7 +64,7 @@ export default function GalleryModal() {
           alignItems: { xs: 'safe center', lg: 'safe center' },
           justifyContent: { xs: 'safe center', lg: 'safe center' },
           overflow: { xs: 'auto' },
-          pt: { xs: '3rem', lg: '0' },
+          pt: { xs: zoomed ? '0' : '3rem', lg: '0' },
           outline: 'none',
         }}
         role="main"
