@@ -1,9 +1,17 @@
 import { createContext } from 'react';
 
 export const CursorContext = createContext<{
-  text: string | null;
-  updateText: (newText: string | null) => void;
+  slug: string | null;
+  updateSlug: (newSlug: string | null) => void;
 }>({
-  text: null,
-  updateText: () => {},
+  slug: null,
+  updateSlug: () => {},
+});
+
+export const ModalContext = createContext<{
+  zoomed: boolean;
+  setZoomed: (zoomed: boolean) => void;
+}>({
+  zoomed: false,
+  setZoomed: () => {},
 });

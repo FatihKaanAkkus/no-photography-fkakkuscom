@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation, useParams } from 'wouter';
 import { slugToImageData, type ImageItem } from './data';
 import Modal from '@mui/material/Modal';
@@ -14,6 +14,7 @@ import IconArrowOutward from '@mui/icons-material/ArrowOutward';
 import IconPlace from '@mui/icons-material/Place';
 import type { Theme } from '@mui/material/styles';
 import type { SxProps } from '@mui/material/styles';
+import { ModalContext } from './context-store';
 
 export default function GalleryModal() {
   const [zoomed, setZoomed] = useState(false);
@@ -26,16 +27,6 @@ export default function GalleryModal() {
     navigate('/');
     return <></>;
   }
-
-  const srcSet = entry.sizes
-    ? zoomed
-      ? `${entry.sizes.full}`
-      : `${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
-    : entry.uri;
-
-  const sizes = zoomed
-    ? '100vw'
-    : '(max-width: 600px) 100vw, (max-width: 900px) 70vw, 75vw';
 
   return (
     <Modal
@@ -122,29 +113,9 @@ export default function GalleryModal() {
               maxWidth: '100%',
             }}
           >
-            <motion.img
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              sizes={sizes}
-              srcSet={entry.sizes ? srcSet : undefined}
-              src={entry.sizes ? entry.sizes.full : entry.uri}
-              alt={entry.title}
-              loading="eager"
-              width={entry.size ? entry.size.width : undefined}
-              height={entry.size ? entry.size.height : undefined}
-              style={{
-                cursor: zoomed ? 'zoom-out' : 'zoom-in',
-                maxWidth: zoomed ? 'none' : '100%',
-                maxHeight: zoomed ? 'none' : 'calc(100vh - 6rem)',
-                width: zoomed ? '100%' : 'auto',
-                height: zoomed ? 'auto' : 'auto',
-                objectFit: 'contain',
-                display: 'block',
-              }}
-              tabIndex={0}
-              onClick={() => setZoomed(!zoomed)}
-            />
+            <ModalContext.Provider value={{ zoomed, setZoomed }}>
+              <Image entry={entry} />
+            </ModalContext.Provider>
           </Box>
 
           {/* Sidebar */}
@@ -168,11 +139,41 @@ export default function GalleryModal() {
   );
 }
 
-const overlayButtonSx: SxProps<Theme> = {
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  ':hover': { backgroundColor: 'rgba(0, 0, 0, 0.7)' },
-  color: 'white',
-};
+function Image({ entry }: { entry: ImageItem }) {
+  const ctx = useContext(ModalContext);
+  const sizes = ctx.zoomed
+    ? '100vw'
+    : '(max-width: 600px) 100vw, (max-width: 900px) 70vw, 75vw';
+  const srcSet = entry.sizes
+    ? ctx.zoomed
+      ? `${entry.sizes.full}`
+      : `${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
+    : entry.uri;
+
+  return (
+    <motion.img
+      className={ctx.zoomed ? 'image-zoomed' : 'image'}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      sizes={sizes}
+      srcSet={entry.sizes ? srcSet : undefined}
+      src={entry.sizes ? entry.sizes.full : entry.uri}
+      alt={entry.title}
+      loading="eager"
+      width={entry.size ? entry.size.width : undefined}
+      height={entry.size ? entry.size.height : undefined}
+      tabIndex={0}
+      onClick={() => ctx.setZoomed(!ctx.zoomed)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          ctx.setZoomed(!ctx.zoomed);
+        }
+      }}
+    />
+  );
+}
 
 function ImageDetails({ entry }: { entry: ImageItem }) {
   return (
@@ -265,6 +266,12 @@ function ImageDetails({ entry }: { entry: ImageItem }) {
     </Box>
   );
 }
+
+const overlayButtonSx: SxProps<Theme> = {
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  ':hover': { backgroundColor: 'rgba(0, 0, 0, 0.7)' },
+  color: 'white',
+};
 
 const chipContainerVariants = {
   hidden: {},

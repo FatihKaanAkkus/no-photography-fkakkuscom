@@ -19,3 +19,23 @@
   line-height: 1;
   border-radius: 0.35rem;
 }
+
+.image {
+  cursor: zoom-in;
+  max-width: 100%;
+  max-height: calc(100vh - 6rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.image-zoomed {
+  cursor: zoom-out;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}

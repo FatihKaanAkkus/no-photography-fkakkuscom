@@ -3,7 +3,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { AnimatePresence, motion, MotionValue, useSpring } from 'motion/react';
-import { imgGroup1, imgGroup2 } from './data';
+import { imgGroup1, imgGroup2, slugToImageData } from './data';
 import GalleryGroup from './GalleryGroup';
 import { CursorContext } from './context-store';
 
@@ -11,7 +11,7 @@ export default function Gallery() {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
 
-  const [text, setText] = useState<string | null>(null);
+  const [slug, setSlug] = useState<string | null>(null);
   const x = useSpring(0, { stiffness: 225, damping: 15, mass: 0.1 });
   const y = useSpring(0, { stiffness: 225, damping: 15, mass: 0.1 });
 
@@ -29,8 +29,8 @@ export default function Gallery() {
     >
       <CursorContext.Provider
         value={{
-          text,
-          updateText: (text) => setText(text),
+          slug,
+          updateSlug: (slug) => setSlug(slug),
         }}
       >
         <Box
@@ -57,11 +57,12 @@ export default function Gallery() {
 
 function Popover({ x, y }: { x: MotionValue<number>; y: MotionValue<number> }) {
   const ctx = useContext(CursorContext);
+  const item = ctx.slug ? slugToImageData.get(ctx.slug) : null;
 
   return (
     <>
       <AnimatePresence>
-        {ctx.text && (
+        {item && (
           <motion.div
             className="popover"
             initial={{ opacity: 0, transition: { delay: 0.1 } }}
@@ -77,7 +78,7 @@ function Popover({ x, y }: { x: MotionValue<number>; y: MotionValue<number> }) {
               component="p"
               className="popover-text"
             >
-              {ctx.text}
+              {item.title}
             </Typography>
           </motion.div>
         )}
