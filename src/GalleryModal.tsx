@@ -30,6 +30,7 @@ export default function GalleryModal() {
 
   return (
     <>
+      {/* Custom Overlay Backdrop for Blur Image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -39,7 +40,7 @@ export default function GalleryModal() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 3, delay: 0.3 }}
         style={{
           ...overlayBackdropSx,
           backgroundSize: 'cover',
@@ -49,6 +50,7 @@ export default function GalleryModal() {
             : {}),
         }}
       />
+      {/* Modal Itself */}
       <Modal
         sx={{
           display: 'flex',
@@ -59,7 +61,7 @@ export default function GalleryModal() {
           backdrop: {
             sx: {
               backgroundColor: 'transparent',
-              backdropFilter: 'blur(50px) brightness(25%)',
+              backdropFilter: 'blur(40px) brightness(25%)',
             },
           },
         }}
@@ -299,12 +301,12 @@ const overlayBackdropSx: MotionStyle = {
   right: 0,
   bottom: 0,
   left: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+  backgroundColor: '#242424',
 };
 
 const overlayButtonSx: SxProps<Theme> = {
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  ':hover': { backgroundColor: 'rgba(0, 0, 0, 0.7)' },
+  backgroundColor: 'rgba(18, 18, 18, 0.5)',
+  ':hover': { backgroundColor: 'rgba(18, 18, 18, 0.7)' },
   color: 'white',
 };
 
