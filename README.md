@@ -1,75 +1,77 @@
-# React + TypeScript + Vite
+# No Photography Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fast, and privacy-focused photo gallery web app built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+No Photography Gallery is designed to showcase images and playlists in a clean, responsive interface. It prioritizes user privacy and performance, making it ideal for personal portfolios, event galleries, or curated collections.
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Fast and lightweight, powered by Vite
+- Built with React and TypeScript
+- Built on top of MUI v7 for material design components
+- Responsive design for all devices
+- Easy to customize and extend
+- Privacy-focused with no tracking or ads
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v22+ recommended)
+- npm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/FatihKaanAkkus/no-photography-fkakkuscom.git
+cd no-photography-fkakkuscom
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the local development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+### Deployment
+
+You can deploy the `dist` folder to any static hosting service (Vercel, Netlify, GitHub Pages, etc.).
+
+### Docker Deployment
+
+You can also deploy using Docker. First, build the Docker image:
+
+```bash
+npm run docker:build
+```
+
+Then run the Docker container:
+
+```bash
+npm run docker:up
+```
+
+The application will be accessible at [http://localhost:4848](http://localhost:4848).
+
+### Docker Build Artifact
+
+The docker build step also creates a `dist.tar.gz` file that contains the production build of the application. You can extract this file and serve it using any static file server. The location of the `dist.tar.gz` file in the container is:
+
+```
+/home/node/dist.tar.gz
 ```
