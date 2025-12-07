@@ -7,7 +7,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
-import { motion } from 'motion/react';
+import { motion, type MotionStyle } from 'motion/react';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import IconArrowOutward from '@mui/icons-material/ArrowOutward';
@@ -29,113 +29,139 @@ export default function GalleryModal() {
   }
 
   return (
-    <Modal
-      sx={{
-        display: 'flex',
-        alignItems: 'safe center',
-        justifyContent: 'safe center',
-      }}
-      slotProps={{
-        backdrop: { sx: { backgroundColor: 'rgba(0, 0, 0, 0.95)' } },
-      }}
-      open
-      onClose={() => navigate('/')}
-      role="dialog"
-      aria-labelledby="image-modal-title"
-    >
-      <Box
-        component="article"
-        sx={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          maxWidth: '100vw',
-          maxHeight: '100vh',
-          display: 'flex',
-          alignItems: { xs: 'safe center', lg: 'safe center' },
-          justifyContent: { xs: 'safe center', lg: 'safe center' },
-          overflow: { xs: 'auto' },
-          pt: { xs: zoomed ? '0' : '3rem', lg: '0' },
-          outline: 'none',
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        style={overlayBackdropSx}
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        style={{
+          ...overlayBackdropSx,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          ...(entry.blurDataURL
+            ? { backgroundImage: `url(${entry.blurDataURL})` }
+            : {}),
         }}
-        role="main"
+      />
+      <Modal
+        sx={{
+          display: 'flex',
+          alignItems: 'safe center',
+          justifyContent: 'safe center',
+        }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              backgroundColor: 'transparent',
+              backdropFilter: 'blur(50px) brightness(25%)',
+            },
+          },
+        }}
+        open
+        onClose={() => navigate('/')}
+        role="dialog"
+        aria-labelledby="image-modal-title"
       >
-        {/* Invisible Backdrop to close modal on click outside content */}
-        <Backdrop
-          sx={{ backgroundColor: 'transparent' }}
-          open
-          onClick={() => navigate('/')}
-        />
-
-        {/* Close Button */}
-        {!zoomed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            style={{
-              position: 'absolute',
-              top: '0.5rem',
-              left: '0.5rem',
-              zIndex: 10,
-            }}
-          >
-            <IconButton
-              size="small"
-              onClick={() => navigate('/')}
-              sx={overlayButtonSx}
-              aria-label="Close image modal"
-            >
-              <CloseIcon />
-            </IconButton>
-          </motion.div>
-        )}
-
-        {/* Wrapper groups image and sidebar */}
         <Box
+          component="article"
           sx={{
-            zIndex: 2,
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
             display: 'flex',
-            maxWidth: '100%',
-            maxHeight: '100%',
-            flexDirection: { xs: 'column', lg: 'row' },
-            alignItems: 'safe center',
+            alignItems: { xs: 'safe center', lg: 'safe center' },
+            justifyContent: { xs: 'safe center', lg: 'safe center' },
+            overflow: { xs: 'auto' },
+            pt: { xs: zoomed ? '0' : '3rem', lg: '0' },
+            outline: 'none',
           }}
+          role="main"
         >
-          {/* Image Container */}
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'safe center',
-              justifyContent: 'safe center',
-              maxHeight: '100vh',
-              flex: '0 0 auto',
-              maxWidth: '100%',
-            }}
-          >
-            <ModalContext.Provider value={{ zoomed, setZoomed }}>
-              <Image entry={entry} />
-            </ModalContext.Provider>
-          </Box>
+          {/* Invisible Backdrop to close modal on click outside content */}
+          <Backdrop
+            sx={{ backgroundColor: 'transparent' }}
+            open
+            onClick={() => navigate('/')}
+          />
 
-          {/* Sidebar */}
+          {/* Close Button */}
           {!zoomed && (
-            <Box
-              component="aside"
-              sx={{
-                zIndex: 1,
-                width: { xs: '100%', lg: 270 },
-                p: 4,
-                overflowY: { lg: 'auto' },
-                maxHeight: '100vh',
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              style={{
+                position: 'absolute',
+                top: '0.5rem',
+                left: '0.5rem',
+                zIndex: 10,
               }}
             >
-              <ImageDetails entry={entry} />
-            </Box>
+              <IconButton
+                size="small"
+                onClick={() => navigate('/')}
+                sx={overlayButtonSx}
+                aria-label="Close image modal"
+              >
+                <CloseIcon />
+              </IconButton>
+            </motion.div>
           )}
+
+          {/* Wrapper groups image and sidebar */}
+          <Box
+            sx={{
+              zIndex: 2,
+              display: 'flex',
+              maxWidth: '100%',
+              maxHeight: '100%',
+              flexDirection: { xs: 'column', lg: 'row' },
+              alignItems: 'safe center',
+            }}
+          >
+            {/* Image Container */}
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'safe center',
+                justifyContent: 'safe center',
+                maxHeight: '100vh',
+                flex: '0 0 auto',
+                maxWidth: '100%',
+              }}
+            >
+              <ModalContext.Provider value={{ zoomed, setZoomed }}>
+                <Image entry={entry} />
+              </ModalContext.Provider>
+            </Box>
+
+            {/* Sidebar */}
+            {!zoomed && (
+              <Box
+                component="aside"
+                sx={{
+                  zIndex: 1,
+                  width: { xs: '100%', lg: 270 },
+                  p: 4,
+                  overflowY: { lg: 'auto' },
+                  maxHeight: '100vh',
+                }}
+              >
+                <ImageDetails entry={entry} />
+              </Box>
+            )}
+          </Box>
         </Box>
-      </Box>
-    </Modal>
+      </Modal>
+    </>
   );
 }
 
@@ -266,6 +292,15 @@ function ImageDetails({ entry }: { entry: ImageItem }) {
     </Box>
   );
 }
+
+const overlayBackdropSx: MotionStyle = {
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+};
 
 const overlayButtonSx: SxProps<Theme> = {
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
