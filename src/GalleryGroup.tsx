@@ -41,13 +41,7 @@ function GalleryItem({ item }: { item: ImageItem }) {
     <ImageListItem
       className="gallery-item"
       component={motion.a}
-      variants={
-        !ctx.slug
-          ? itemVariants
-          : item.slug === ctx.slug
-            ? itemVariants
-            : dimmedVariants
-      }
+      variants={itemVariants}
       whileHover={{
         opacity: 1,
         scale: 1.02,
@@ -100,17 +94,6 @@ const itemVariants = {
     scale: 1,
     zIndex: 0,
     filter: 'grayscale(100%)',
-    transition: { delay: 0.1, duration: 0.2 },
-  },
-};
-
-const dimmedVariants = {
-  hidden: { ...itemVariants.hidden },
-  shown: {
-    opacity: 0.6,
-    scale: 1,
-    zIndex: 0,
-    filter: 'grayscale(100%)',
-    transition: { delay: 0.1, duration: 0.2 },
+    transition: { delay: 0.15, duration: 0.3 },
   },
 };

@@ -50,6 +50,7 @@ export default function Gallery() {
           <GalleryGroup images={imgGroup2} />
         </Box>
         <Popover x={x} y={y} />
+        {md && <CustomBackdrop />}
       </CursorContext.Provider>
     </div>
   );
@@ -60,29 +61,67 @@ function Popover({ x, y }: { x: MotionValue<number>; y: MotionValue<number> }) {
   const item = ctx.slug ? slugToImageData.get(ctx.slug) : null;
 
   return (
-    <>
-      <AnimatePresence>
-        {item && (
-          <motion.div
-            className="popover"
-            initial={{ opacity: 0, transition: { delay: 0.1 } }}
-            animate={{ opacity: 1, transition: { delay: 0.1 } }}
-            exit={{ opacity: 0, transition: { delay: 0.1 } }}
-            style={{ x, y }}
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            <Typography
-              variant="caption"
-              component="p"
-              className="popover-text"
-            >
-              {item.title}
-            </Typography>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence>
+      {item && (
+        <motion.div
+          className="popover"
+          initial={{ opacity: 0, transition: { delay: 0.1 } }}
+          animate={{ opacity: 1, transition: { delay: 0.1 } }}
+          exit={{ opacity: 0, transition: { delay: 0.1 } }}
+          style={{ x, y }}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <Typography variant="caption" component="p" className="popover-text">
+            {item.title}
+          </Typography>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
+
+function CustomBackdrop() {
+  const ctx = useContext(CursorContext);
+  const item = ctx.slug ? slugToImageData.get(ctx.slug) : null;
+
+  return (
+    <AnimatePresence>
+      {item && (
+        <motion.div
+          key={item.slug}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1, delay: 0.3 } }}
+          exit={{ opacity: 0, transition: { duration: 0.7 } }}
+          style={{
+            ...overlayBackdropSx,
+            backgroundColor: '#242424',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            ...(item.blurDataURL
+              ? { backgroundImage: `url(${item.blurDataURL})` }
+              : {}),
+          }}
+        />
+      )}
+      <div
+        key="backdrop-filter"
+        style={{
+          ...overlayBackdropSx,
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(40px) brightness(17%)',
+        }}
+      />
+    </AnimatePresence>
+  );
+}
+
+const overlayBackdropSx: React.CSSProperties = {
+  zIndex: -1,
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+};

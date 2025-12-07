@@ -23,7 +23,7 @@
 .image {
   cursor: zoom-in;
   max-width: 100%;
-  max-height: calc(100vh - 6rem);
+  max-height: min(calc(100dvh - 6rem), calc(100vh - 6rem));
   width: auto;
   height: auto;
   object-fit: contain;
