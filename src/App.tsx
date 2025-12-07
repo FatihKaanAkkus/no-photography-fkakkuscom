@@ -34,7 +34,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
       <Box
-        sx={{ p: { xs: 2, md: 3, lg: 4 }, overflow: 'hidden' }}
+        sx={{ p: { xs: 2, md: 3, lg: 4 }, overflow: 'clip' }}
         maxWidth={2000}
         mx="auto"
       >
