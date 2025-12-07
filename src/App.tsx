@@ -33,7 +33,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
-      <Box sx={{ p: { xs: 2, md: 3, lg: 4 } }} maxWidth={2000} mx="auto">
+      <Box
+        sx={{ p: { xs: 2, md: 3, lg: 4 }, overflow: 'hidden' }}
+        maxWidth={2000}
+        mx="auto"
+      >
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, lg: 10 }} offset={{ lg: 2 }}>
             <Typography
@@ -41,7 +45,13 @@ export default function App() {
               component={motion.h1}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              sx={{ fontWeight: 700, mt: 6, mb: { xs: 6, lg: 8 } }}
+              sx={{
+                fontWeight: 700,
+                mt: 6,
+                mb: { xs: 6, lg: 8 },
+                overflow: 'hidden',
+                wordBreak: 'break-word',
+              }}
             >
               No Photography
             </Typography>
@@ -49,7 +59,7 @@ export default function App() {
         </Grid>
         <Grid
           container
-          spacing={4}
+          spacing={{ xs: 2, xl: 4 }}
           sx={{ mb: 4, position: { lg: 'relative' } }}
         >
           <Grid size={{ xs: 12, sm: 7, lg: 2 }}>
@@ -77,10 +87,10 @@ export default function App() {
               </Typography>
             </Box>
           </Grid>
-          <Grid size={{ xs: 12, lg: 7, xl: 8 }}>
+          <Grid size={{ xs: 12, lg: 8, xl: 8 }}>
             <Gallery />
           </Grid>
-          <Grid size={{ xs: 12, sm: 10, md: 6, lg: 3, xl: 2 }}>
+          <Grid size={{ xs: 12, sm: 10, md: 6, lg: 2, xl: 2 }}>
             <Box sx={{ mb: 4 }}>
               <Typography
                 variant="h6"

@@ -15,7 +15,7 @@ export default function Playlist() {
       variants={containerVariants}
       initial="hidden"
       animate="shown"
-      spacing={{ xs: 1, lg: 1.5 }}
+      spacing={{ xs: 1, sm: 1.25, md: 1.5 }}
     >
       {playlist.map((item) => (
         <PlaylistCard
@@ -50,14 +50,18 @@ function PlaylistCard({
       tabIndex={0}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <CardContent sx={{ flex: '1 0 auto', pr: 0 }}>
-          <Typography variant="caption" component="div">
+        <CardContent sx={{ flex: '1 0 auto', pr: 0, ':last-child': { pb: 2 } }}>
+          <Typography
+            variant="caption"
+            component="div"
+            sx={{ lineHeight: 1.25, pb: 0.25 }}
+          >
             {title}
           </Typography>
           <Typography
             variant="caption"
             component="div"
-            sx={{ color: 'text.secondary' }}
+            sx={{ fontWeight: 300, color: 'text.secondary', lineHeight: 1.2 }}
           >
             {artist}
           </Typography>
@@ -86,6 +90,6 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.95, filter: 'grayscale(100%)' },
+  hidden: { opacity: 0, scale: 1, filter: 'grayscale(100%)' },
   shown: { opacity: 1, scale: 1, filter: 'grayscale(100%)' },
 };
