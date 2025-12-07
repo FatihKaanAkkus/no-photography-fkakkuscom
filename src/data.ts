@@ -1,3 +1,5 @@
+import { blurDataUrls } from './data-blur';
+
 export type ImageSizes = {
   xs: string;
   sm: string;
@@ -26,6 +28,7 @@ export type ImageItem = {
   location?: string;
   exif?: ExifData;
   icons?: string[];
+  blurDataURL?: string;
 };
 
 export type PlaylistItem = {
@@ -813,10 +816,16 @@ export const imgGroup2: ImageItem[] = [
 
 const slugToImageData = new Map<string, ImageItem>();
 imgGroup1.forEach((item) => {
-  slugToImageData.set(item.slug, item);
+  slugToImageData.set(item.slug, {
+    ...item,
+    blurDataURL: blurDataUrls[item.slug],
+  });
 });
 imgGroup2.forEach((item) => {
-  slugToImageData.set(item.slug, item);
+  slugToImageData.set(item.slug, {
+    ...item,
+    blurDataURL: blurDataUrls[item.slug],
+  });
 });
 
 export { slugToImageData };
