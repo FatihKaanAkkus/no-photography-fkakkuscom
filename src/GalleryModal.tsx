@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'wouter';
 import { slugToImageData, type ImageItem } from './data';
 import Modal from '@mui/material/Modal';
@@ -23,8 +23,13 @@ export default function GalleryModal() {
   const params = useParams<{ slug: string }>();
   const entry = slugToImageData.get(params.slug);
 
+  useEffect(() => {
+    if (!entry) {
+      navigate('/');
+    }
+  }, [entry, navigate]);
+
   if (!entry) {
-    navigate('/');
     return <></>;
   }
 
@@ -220,7 +225,7 @@ function ImageDetails({ entry }: { entry: ImageItem }) {
       <Stack spacing={1} justifyContent="flex-start">
         <Typography
           id="image-modal-title"
-          component={motion.div}
+          component={motion.h2}
           variants={chipVariants}
           variant="h4"
           sx={{ fontWeight: 300, color: 'text.secondary' }}

@@ -61,6 +61,7 @@ function GalleryItem({ item }: { item: ImageItem }) {
       onMouseLeave={() => ctx.updateSlug(null)}
       onBlur={() => ctx.updateSlug(null)}
       role="link"
+      aria-label={`View details for ${item.title}`}
     >
       <img
         srcSet={
