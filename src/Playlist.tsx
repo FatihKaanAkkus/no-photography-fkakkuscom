@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { motion } from 'motion/react';
 import Stack from '@mui/material/Stack';
-import { playlist } from './data';
+import { playlist, type PlaylistItem } from './data';
 
 export default function Playlist() {
   return (
@@ -29,15 +29,7 @@ export default function Playlist() {
   );
 }
 
-function PlaylistCard({
-  title,
-  artist,
-  image,
-}: {
-  title: string;
-  artist: string;
-  image: string;
-}) {
+function PlaylistCard({ title, artist, image }: PlaylistItem) {
   const theme = useTheme();
 
   return (

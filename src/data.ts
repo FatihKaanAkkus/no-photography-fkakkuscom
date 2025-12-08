@@ -31,13 +31,19 @@ export type ImageItem = {
   blurDataURL?: string;
 };
 
+export type GalleryItems = ImageItem[];
+
+export type GalleryItemsMap = Map<string, ImageItem>;
+
 export type PlaylistItem = {
   title: string;
   artist: string;
   image: string;
 };
 
-export const imgGroup1: ImageItem[] = [
+export type PlaylistItems = PlaylistItem[];
+
+export const imgGroup1: GalleryItems = [
   {
     title: 'Sounds Lost Their Meaning',
     slug: 'sounds-lost-their-meaning',
@@ -256,7 +262,7 @@ export const imgGroup1: ImageItem[] = [
   },
 ];
 
-export const imgGroup2: ImageItem[] = [
+export const imgGroup2: GalleryItems = [
   {
     title: 'Crane Sunset Skyline',
     slug: 'crane-sunset-skyline',
@@ -814,7 +820,7 @@ export const imgGroup2: ImageItem[] = [
   },
 ];
 
-const slugToImageData = new Map<string, ImageItem>();
+const slugToImageData: GalleryItemsMap = new Map<string, ImageItem>();
 imgGroup1.forEach((item) => {
   slugToImageData.set(item.slug, {
     ...item,
@@ -830,7 +836,7 @@ imgGroup2.forEach((item) => {
 
 export { slugToImageData };
 
-export const playlist = [
+export const playlist: PlaylistItems = [
   {
     title: 'Toz',
     artist: 'Jakuzi',

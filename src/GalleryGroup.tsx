@@ -4,11 +4,11 @@ import { useTheme } from '@mui/material/styles';
 import ImageListItem from '@mui/material/ImageListItem';
 import Masonry from '@mui/lab/Masonry';
 import { motion } from 'motion/react';
-import { type ImageItem } from './data';
+import { type GalleryItems, type ImageItem } from './data';
 import { useLocation } from 'wouter';
 import { CursorContext } from './context-store';
 
-export default function GalleryGroup({ images }: { images: ImageItem[] }) {
+export default function GalleryGroup({ images }: { images: GalleryItems }) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const md = useMediaQuery(theme.breakpoints.up('md'));
