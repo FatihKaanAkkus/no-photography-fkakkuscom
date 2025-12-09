@@ -75,8 +75,8 @@ function GalleryItem({ item }: { item: ImageItem }) {
         alt={item.title}
         loading="lazy"
         style={{ borderRadius: theme.spacing(0.75) }}
-        width={item.size ? Math.round(kSize * item.size.width) : undefined}
-        height={item.size ? Math.round(kSize * item.size.height) : undefined}
+        width={Math.round(kSize * item.size.width)}
+        height={Math.round(kSize * item.size.height)}
       />
     </ImageListItem>
   );

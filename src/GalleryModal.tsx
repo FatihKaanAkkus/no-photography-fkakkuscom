@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'wouter';
 import { slugToImageData, type ImageItem } from './data';
+import type { Theme } from '@mui/material/styles';
+import type { SxProps } from '@mui/material/styles';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
-import { motion, type MotionStyle } from 'motion/react';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import IconArrowOutward from '@mui/icons-material/ArrowOutward';
 import IconPlace from '@mui/icons-material/Place';
-import type { Theme } from '@mui/material/styles';
-import type { SxProps } from '@mui/material/styles';
 import { ModalContext } from './context-store';
+import { chipContainerVariants, chipVariants } from './gallery-variants';
+import { motion, type MotionStyle } from 'motion/react';
+import Icons from './GalleryIcons';
 
 export default function GalleryModal() {
   const [zoomed, setZoomed] = useState(false);
@@ -176,11 +178,11 @@ function Image({ entry }: { entry: ImageItem }) {
   const ctx = useContext(ModalContext);
   const sizes = ctx.zoomed
     ? '100vw'
-    : '(max-width: 600px) 100vw, (max-width: 900px) 70vw, 75vw';
+    : '(max-width: 600px) 100vw, (max-width: 900px) 90vw, (max-width: 1200px) 80vw, calc(100vw - 270px - 6rem)';
   const srcSet = entry.sizes
     ? ctx.zoomed
       ? `${entry.sizes.full}`
-      : `${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
+      : `${entry.blurDataURL} 10w, ${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
     : entry.uri;
 
   return (
@@ -194,8 +196,8 @@ function Image({ entry }: { entry: ImageItem }) {
       src={entry.sizes ? entry.sizes.full : entry.uri}
       alt={entry.title}
       loading="eager"
-      width={entry.size ? entry.size.width : undefined}
-      height={entry.size ? entry.size.height : undefined}
+      width={entry.size.width}
+      height={entry.size.height}
       tabIndex={0}
       onClick={() => ctx.setZoomed(!ctx.zoomed)}
       onKeyDown={(e) => {
@@ -282,6 +284,11 @@ function ImageDetails({ entry }: { entry: ImageItem }) {
           </motion.div>
         )}
       </Stack>
+      {entry.icons && (
+        <Stack direction="row">
+          <Icons icons={entry.icons} />
+        </Stack>
+      )}
       <Stack direction="row" justifyContent="flex-start" sx={{ mt: 'auto' }}>
         <motion.div variants={chipVariants}>
           <IconButton
@@ -313,16 +320,4 @@ const overlayButtonSx: SxProps<Theme> = {
   backgroundColor: 'rgba(18, 18, 18, 0.5)',
   ':hover': { backgroundColor: 'rgba(18, 18, 18, 0.7)' },
   color: 'white',
-};
-
-const chipContainerVariants = {
-  hidden: {},
-  shown: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.2 },
-  },
-};
-
-const chipVariants = {
-  hidden: { opacity: 0, y: 10 },
-  shown: { opacity: 1, y: 0 },
 };

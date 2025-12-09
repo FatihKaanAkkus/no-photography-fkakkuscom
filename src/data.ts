@@ -24,7 +24,7 @@ export type ImageItem = {
   slug: string;
   uri: string;
   sizes?: ImageSizes;
-  size?: { width: number; height: number; aspect: number };
+  size: { width: number; height: number; aspect: number };
   location?: string;
   exif?: ExifData;
   icons?: string[];
@@ -56,7 +56,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sounds-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sounds-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 3555, aspect: Math.floor(2000 / 3555) },
+    size: { width: 2000, height: 3555, aspect: 2000 / 3555 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -80,7 +80,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colors-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colors-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -104,7 +104,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/waves-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/waves-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -128,7 +128,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/clock-tower-bleeds-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/clock-tower-bleeds.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -152,7 +152,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/smells-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/smells-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -176,7 +176,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/moving-lost-its-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/moving-lost-its-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -200,7 +200,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tastes-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tastes-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -224,7 +224,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/hobbies-lost-their-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/hobbies-lost-their-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -248,7 +248,7 @@ export const imgGroup1: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/warmth-lost-its-meaning-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/warmth-lost-its-meaning.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -275,7 +275,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/crane-sunset-skyline-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/crane-sunset-skyline.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -299,7 +299,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-with-red-door-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-with-red-door.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -323,7 +323,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-entrance-with-red-door-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/antique-shop-entrance-with-red-door.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -347,7 +347,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-soda-factory-in-narrow-street-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-soda-factory-in-narrow-street.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -371,7 +371,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/rafts-in-a-valley-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/rafts-in-a-valley.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -396,7 +396,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/lake-by-the-mountains-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/lake-by-the-mountains.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -421,7 +421,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/raft-on-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/raft-on-the-mountain-lake.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -432,6 +432,7 @@ export const imgGroup2: GalleryItems = [
       focalLength: '34mm',
     },
     location: 'Ohrid, North Macedonia',
+    icons: ['favorite'],
   },
   {
     title: 'Church by the Mountain Lake',
@@ -445,7 +446,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-by-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-by-the-mountain-lake.jpg?ver=1',
     },
-    size: { width: 2000, height: 2666, aspect: Math.floor(2000 / 2666) },
+    size: { width: 2000, height: 2666, aspect: 2000 / 2666 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -456,6 +457,7 @@ export const imgGroup2: GalleryItems = [
       focalLength: '32mm',
     },
     location: 'Ohrid, North Macedonia',
+    icons: ['favorite'],
   },
   {
     title: 'Boardwalk by the Mountain Lake',
@@ -469,7 +471,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/boardwalk-by-the-mountain-lake-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/boardwalk-by-the-mountain-lake.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -494,7 +496,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlight-through-stained-glass-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlight-through-stained-glass.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -505,6 +507,7 @@ export const imgGroup2: GalleryItems = [
       focalLength: '22mm',
     },
     location: 'Ayvalık, Turkey',
+    icons: ['favorite'],
   },
   {
     title: 'Two Ducks Preening',
@@ -518,7 +521,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/two-ducks-preening-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/two-ducks-preening.jpg?ver=1',
     },
-    size: { width: 2000, height: 1600, aspect: Math.floor(2000 / 1600) },
+    size: { width: 2000, height: 1600, aspect: 2000 / 1600 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 70-300mm F4-5.6',
@@ -542,7 +545,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunset-horizon-over-distance-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunset-horizon-over-distance.jpg?ver=1',
     },
-    size: { width: 2000, height: 1333, aspect: Math.floor(2000 / 1333) },
+    size: { width: 2000, height: 1333, aspect: 2000 / 1333 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -566,7 +569,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-rails-split-four-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-rails-split-four.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -590,7 +593,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-clock-in-station-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/train-clock-in-station.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -614,7 +617,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-town-colors-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/old-town-colors.jpg?ver=1',
     },
-    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
+    size: { width: 2000, height: 2667, aspect: 2000 / 2667 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -638,7 +641,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-between-old-houses-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/church-between-old-houses.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -662,7 +665,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-ferrari-new-years-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-ferrari-new-years.jpg?ver=1',
     },
-    size: { width: 2000, height: 2666, aspect: Math.floor(2000 / 2666) },
+    size: { width: 2000, height: 2666, aspect: 2000 / 2666 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -673,6 +676,7 @@ export const imgGroup2: GalleryItems = [
       focalLength: '55mm',
     },
     location: 'Istanbul, Turkey',
+    icons: ['favorite'],
   },
   {
     title: 'New Year’s Tree at Night',
@@ -686,7 +690,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/new-years-tree-at-night-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/new-years-tree-at-night.jpg?ver=1',
     },
-    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
+    size: { width: 2000, height: 2667, aspect: 2000 / 2667 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -710,7 +714,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tour-of-turkey-2023-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/tour-of-turkey-2023.jpg?ver=1',
     },
-    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
+    size: { width: 2000, height: 2667, aspect: 2000 / 2667 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -734,7 +738,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colorful-dove-by-the-window-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/colorful-dove-by-the-window.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -758,7 +762,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlit-cat-through-grass-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/sunlit-cat-through-grass.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -782,7 +786,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/galata-vibes-from-tower-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/galata-vibes-from-tower.jpg?ver=1',
     },
-    size: { width: 2000, height: 2667, aspect: Math.floor(2000 / 2667) },
+    size: { width: 2000, height: 2667, aspect: 2000 / 2667 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
@@ -806,7 +810,7 @@ export const imgGroup2: GalleryItems = [
       xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/drip-coffee-by-the-plant-w_1000.jpg',
       full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/drip-coffee-by-the-plant.jpg?ver=1',
     },
-    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    size: { width: 2000, height: 3000, aspect: 2000 / 3000 },
     exif: {
       camera: 'FUJIFILM X-S10',
       lens: 'FUJINON XF 18-55mm F2.8-4',
