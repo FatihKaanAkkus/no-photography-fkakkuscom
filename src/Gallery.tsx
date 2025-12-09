@@ -36,7 +36,7 @@ export default function Gallery() {
         <Box
           sx={{
             mb: { xs: 8, lg: 12 },
-            mr: { xs: -1, sm: -1.25, md: -1.5 }, // masonry fix
+            mr: { xs: -1.25, sm: -2, md: -3 }, // masonry fix
           }}
         >
           <GalleryGroup images={imgGroup1} />
@@ -44,7 +44,7 @@ export default function Gallery() {
         <Box
           sx={{
             mb: { xs: 8, lg: 12 },
-            mr: { xs: -1, sm: -1.25, md: -1.5 }, // masonry fix
+            mr: { xs: -1.25, sm: -2, md: -3 }, // masonry fix
           }}
         >
           <GalleryGroup images={imgGroup2} />
@@ -102,6 +102,7 @@ function CustomBackdrop() {
             ...(item.blurDataURL
               ? { backgroundImage: `url(${item.blurDataURL})` }
               : {}),
+            filter: 'brightness(17%)',
           }}
         />
       )}
@@ -110,7 +111,7 @@ function CustomBackdrop() {
         style={{
           ...overlayBackdropSx,
           backgroundColor: 'transparent',
-          backdropFilter: 'blur(40px) brightness(17%)',
+          backdropFilter: 'blur(44px)',
         }}
       />
     </AnimatePresence>

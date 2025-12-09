@@ -12,11 +12,12 @@ export default function GalleryGroup({ images }: { images: GalleryItems }) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const md = useMediaQuery(theme.breakpoints.up('md'));
+  const lg = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
     <Masonry
       columns={md ? 4 : sm ? 3 : 2}
-      spacing={md ? 1.5 : sm ? 1.25 : 1}
+      spacing={lg ? 3 : md ? 2.5 : sm ? 2 : 1.5}
       sx={{ mt: 0, overflow: 'visible' }}
       component={motion.div}
       variants={containerVariants}
@@ -51,7 +52,7 @@ function GalleryItem({ item }: { item: ImageItem }) {
       whileTap={{ filter: 'grayscale(0%)' }}
       whileFocus={{ filter: 'grayscale(0%)' }}
       viewport={{ once: true }}
-      sx={{ position: 'relative', borderRadius: theme.spacing(1) }}
+      sx={{ position: 'relative', borderRadius: theme.spacing(0.75) }}
       href={`/p/${item.slug}`}
       onClick={(e) => {
         e.preventDefault();
@@ -73,7 +74,7 @@ function GalleryItem({ item }: { item: ImageItem }) {
         sizes="(max-width: 300px) 300px, (max-width: 600px) 450px, (max-width: 900px) 600px, (max-width: 1200px) 768px, (max-width: 1536px) 1000px, 2000px"
         alt={item.title}
         loading="lazy"
-        style={{ borderRadius: theme.spacing(1) }}
+        style={{ borderRadius: theme.spacing(0.75) }}
         width={item.size ? Math.round(kSize * item.size.width) : undefined}
         height={item.size ? Math.round(kSize * item.size.height) : undefined}
       />

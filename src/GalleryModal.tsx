@@ -66,7 +66,7 @@ export default function GalleryModal() {
           backdrop: {
             sx: {
               backgroundColor: 'transparent',
-              backdropFilter: 'blur(40px) brightness(25%)',
+              backdropFilter: 'blur(44px) brightness(25%)',
             },
           },
         }}
