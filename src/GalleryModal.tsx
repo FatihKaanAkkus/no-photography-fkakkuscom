@@ -182,7 +182,7 @@ function Image({ entry }: { entry: ImageItem }) {
   const srcSet = entry.sizes
     ? ctx.zoomed
       ? `${entry.sizes.full}`
-      : `${entry.blurDataURL} 10w, ${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
+      : `${entry.sizes.xs} 300w, ${entry.sizes.sm} 450w, ${entry.sizes.md} 600w, ${entry.sizes.lg} 768w, ${entry.sizes.xl} 1000w, ${entry.sizes.full} 2000w`
     : entry.uri;
 
   return (
