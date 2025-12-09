@@ -18,7 +18,12 @@ export default function Icons({ icons }: { icons: string[] }) {
     (name, i) =>
       iconComponents[name] && (
         <motion.div variants={chipVariants} key={`icon-${name}-${i}`}>
-          <IconButton size="small" role="none">
+          <IconButton
+            size="small"
+            role="presentation"
+            aria-hidden="true"
+            tabIndex={-1}
+          >
             {iconComponents[name]}
           </IconButton>
         </motion.div>
