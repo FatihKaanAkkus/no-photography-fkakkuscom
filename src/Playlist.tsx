@@ -38,7 +38,7 @@ function PlaylistCard({ title, artist, image }: PlaylistItem) {
       variants={itemVariants}
       whileHover={{ opacity: 1, scale: 1.033, filter: 'grayscale(0%)' }}
       viewport={{ once: true }}
-      sx={{ display: 'flex', borderRadius: theme.spacing(1) }}
+      sx={{ display: 'flex', borderRadius: theme.spacing(0.75) }}
       tabIndex={0}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -66,7 +66,7 @@ function PlaylistCard({ title, artist, image }: PlaylistItem) {
           width: 54,
           m: 1,
           alignSelf: 'center',
-          borderRadius: theme.spacing(1),
+          borderRadius: theme.spacing(0.75),
         }}
         image={image}
         alt={`album cover for ${title}`}

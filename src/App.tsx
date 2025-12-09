@@ -59,7 +59,7 @@ export default function App() {
         </Grid>
         <Grid
           container
-          spacing={{ xs: 2, xl: 4 }}
+          spacing={{ xs: 1.25, sm: 2, md: 3 }}
           sx={{ mb: 4, position: { lg: 'relative' } }}
         >
           <Grid size={{ xs: 12, sm: 7, lg: 2 }}>
