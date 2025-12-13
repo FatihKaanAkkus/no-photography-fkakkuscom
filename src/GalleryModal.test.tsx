@@ -12,7 +12,7 @@ import { memoryLocation } from 'wouter/memory-location';
 expect.extend(matchers);
 
 describe('GalleryModal', () => {
-  it('renders image, title, details, view original link, and close button', () => {
+  it('renders image, title, details, original link and navigation buttons', () => {
     const firstImage = imgGroup1[0];
     const { hook, searchHook } = memoryLocation({
       path: `/p/${firstImage.slug}`,
@@ -62,5 +62,17 @@ describe('GalleryModal', () => {
       name: /close image modal/i,
     });
     expect(closeButton).toBeInTheDocument();
+
+    // Next button
+    const nextButton = screen.getByRole('button', {
+      name: /navigate to next image/i,
+    });
+    expect(nextButton).toBeInTheDocument();
+
+    // Previous button
+    const prevButton = screen.getByRole('button', {
+      name: /navigate to previous image/i,
+    });
+    expect(prevButton).toBeInTheDocument();
   });
 });

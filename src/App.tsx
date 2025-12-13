@@ -4,7 +4,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
-import { Route, Switch, useLocation } from 'wouter';
+import { Route, Switch } from 'wouter';
 import {
   ThemeProvider,
   createTheme,
@@ -28,8 +28,6 @@ let theme = createTheme({
 theme = responsiveFontSizes(theme);
 
 export default function App() {
-  const [location] = useLocation();
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
@@ -126,7 +124,7 @@ export default function App() {
       </Box>
       <Switch>
         <Route path="/p/:slug">
-          <GalleryModal key={location} />
+          <GalleryModal />
         </Route>
       </Switch>
     </ThemeProvider>

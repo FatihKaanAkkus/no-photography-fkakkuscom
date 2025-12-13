@@ -94,11 +94,9 @@ function CustomBackdrop() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 1, delay: 0.3 } }}
           exit={{ opacity: 0, transition: { duration: 0.7 } }}
+          className="custom-backdrop"
           style={{
-            ...overlayBackdropSx,
             backgroundColor: '#242424',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             ...(item.blurDataURL
               ? { backgroundImage: `url(${item.blurDataURL})` }
               : {}),
@@ -108,21 +106,9 @@ function CustomBackdrop() {
       )}
       <div
         key="backdrop-filter"
-        style={{
-          ...overlayBackdropSx,
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(44px)',
-        }}
+        className="custom-backdrop"
+        style={{ backdropFilter: 'blur(44px)' }}
       />
     </AnimatePresence>
   );
 }
-
-const overlayBackdropSx: React.CSSProperties = {
-  zIndex: -1,
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-};
