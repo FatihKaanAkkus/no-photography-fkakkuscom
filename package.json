@@ -11,9 +11,10 @@
     "preview": "vite preview",
     "prettier-check": "npx prettier . --check",
     "prettier-format": "npx prettier . --write",
-    "docker:build": "docker compose up --build --no-start",
-    "docker:up": "docker compose up",
-    "docker:down": "docker compose down"
+    "docker:build": "docker compose up server --build --no-start",
+    "docker:build:test": "docker compose up test --build --no-start",
+    "docker:up": "docker compose up server",
+    "docker:down": "docker compose down server"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

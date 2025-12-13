@@ -8,6 +8,14 @@ WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci
 
+# Test stage
+FROM base AS test
+WORKDIR /app
+COPY --from=deps /app/node_modules /app/node_modules
+ADD . .
+RUN npm run lint
+RUN npm test -- --run
+
 # Build stage
 FROM base AS build
 WORKDIR /app

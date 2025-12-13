@@ -6,3 +6,10 @@ services:
       NODE_ENV: production
     ports:
       - 4848:4848
+
+  test:
+    build:
+      context: .
+      target: test
+    environment:
+      NODE_ENV: test
