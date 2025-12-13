@@ -39,3 +39,54 @@
   object-fit: contain;
   display: block;
 }
+
+.navigate-close {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+}
+
+.navigate-previous {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-50%);
+}
+
+.navigate-next {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  z-index: 100;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .navigate-previous {
+    left: auto;
+    right: 0.5rem;
+    top: 0.5rem;
+    transform: translateX(calc(-100% - 0.5rem));
+  }
+
+  .navigate-next {
+    left: auto;
+    right: 0.5rem;
+    top: 0.5rem;
+    transform: none;
+  }
+}
+
+.custom-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+}

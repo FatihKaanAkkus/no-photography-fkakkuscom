@@ -29,6 +29,8 @@ export type ImageItem = {
   exif?: ExifData;
   icons?: string[];
   blurDataURL?: string;
+  prevSlug?: string;
+  nextSlug?: string;
 };
 
 export type GalleryItems = ImageItem[];
@@ -825,18 +827,27 @@ export const imgGroup2: GalleryItems = [
 ];
 
 const slugToImageData: GalleryItemsMap = new Map<string, ImageItem>();
-imgGroup1.forEach((item) => {
-  slugToImageData.set(item.slug, {
-    ...item,
-    blurDataURL: blurDataUrls[item.slug],
+
+for (let i = 0; i < imgGroup1.length; i++) {
+  slugToImageData.set(imgGroup1[i].slug, {
+    ...imgGroup1[i],
+    blurDataURL: blurDataUrls[imgGroup1[i].slug],
+    prevSlug:
+      i > 0 ? imgGroup1[i - 1].slug : imgGroup2[imgGroup2.length - 1].slug,
+    nextSlug:
+      i < imgGroup1.length - 1 ? imgGroup1[i + 1].slug : imgGroup2[0].slug,
   });
-});
-imgGroup2.forEach((item) => {
-  slugToImageData.set(item.slug, {
-    ...item,
-    blurDataURL: blurDataUrls[item.slug],
+}
+for (let i = 0; i < imgGroup2.length; i++) {
+  slugToImageData.set(imgGroup2[i].slug, {
+    ...imgGroup2[i],
+    blurDataURL: blurDataUrls[imgGroup2[i].slug],
+    prevSlug:
+      i > 0 ? imgGroup2[i - 1].slug : imgGroup1[imgGroup1.length - 1].slug,
+    nextSlug:
+      i < imgGroup2.length - 1 ? imgGroup2[i + 1].slug : imgGroup1[0].slug,
   });
-});
+}
 
 export { slugToImageData };
 

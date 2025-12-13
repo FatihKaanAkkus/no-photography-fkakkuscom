@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'wouter';
 import { slugToImageData, type ImageItem } from './data';
 import type { Theme } from '@mui/material/styles';
@@ -10,12 +10,14 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CloseIcon from '@mui/icons-material/Close';
+import PreviousIcon from '@mui/icons-material/NavigateBefore';
+import NextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
 import IconArrowOutward from '@mui/icons-material/ArrowOutward';
 import IconPlace from '@mui/icons-material/Place';
 import { ModalContext } from './context-store';
 import { chipContainerVariants, chipVariants } from './gallery-variants';
-import { motion, type MotionStyle } from 'motion/react';
+import { AnimatePresence, motion, type MotionStyle } from 'motion/react';
 import Icons from './GalleryIcons';
 
 export default function GalleryModal() {
@@ -25,11 +27,31 @@ export default function GalleryModal() {
   const params = useParams<{ slug: string }>();
   const entry = slugToImageData.get(params.slug);
 
+  const handleKeyPress = useCallback(
+    (e: KeyboardEvent) => {
+      if (!entry) {
+        return;
+      }
+      if (e.key === 'ArrowRight' && entry.nextSlug) {
+        navigate(`/p/${entry.nextSlug}`);
+      } else if (e.key === 'ArrowLeft' && entry.prevSlug) {
+        navigate(`/p/${entry.prevSlug}`);
+      }
+    },
+    [entry, navigate],
+  );
+
   useEffect(() => {
     if (!entry) {
       navigate('/');
+      return;
     }
-  }, [entry, navigate]);
+
+    window.addEventListener('keyup', handleKeyPress);
+    return () => {
+      window.removeEventListener('keyup', handleKeyPress);
+    };
+  }, [entry, navigate, handleKeyPress]);
 
   if (!entry) {
     return <></>;
@@ -44,19 +66,23 @@ export default function GalleryModal() {
         transition={{ duration: 0.3 }}
         style={overlayBackdropSx}
       />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 3, delay: 0.3 }}
-        style={{
-          ...overlayBackdropSx,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          ...(entry.blurDataURL
-            ? { backgroundImage: `url(${entry.blurDataURL})` }
-            : {}),
-        }}
-      />
+      <AnimatePresence>
+        <motion.div
+          key={entry.slug}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 3, delay: 0.3 }}
+          style={{
+            ...overlayBackdropSx,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            ...(entry.blurDataURL
+              ? { backgroundImage: `url(${entry.blurDataURL})` }
+              : {}),
+          }}
+        />
+      </AnimatePresence>
       {/* Modal Itself */}
       <Modal
         sx={{
@@ -107,12 +133,7 @@ export default function GalleryModal() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              style={{
-                position: 'absolute',
-                top: '0.5rem',
-                left: '0.5rem',
-                zIndex: 10,
-              }}
+              className="navigate-close"
             >
               <IconButton
                 size="small"
@@ -121,6 +142,48 @@ export default function GalleryModal() {
                 aria-label="Close image modal"
               >
                 <CloseIcon />
+              </IconButton>
+            </motion.div>
+          )}
+          {/* Previous Button */}
+          {!zoomed && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="navigate-previous"
+            >
+              <IconButton
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/p/${entry.prevSlug}`);
+                }}
+                sx={overlayButtonSx}
+                aria-label="Navigate to previous image"
+              >
+                <PreviousIcon />
+              </IconButton>
+            </motion.div>
+          )}
+          {/* Next Button */}
+          {!zoomed && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="navigate-next"
+            >
+              <IconButton
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/p/${entry.nextSlug}`);
+                }}
+                sx={overlayButtonSx}
+                aria-label="Navigate to next image"
+              >
+                <NextIcon />
               </IconButton>
             </motion.div>
           )}
@@ -145,10 +208,11 @@ export default function GalleryModal() {
                 maxHeight: '100vh',
                 flex: '0 0 auto',
                 maxWidth: '100%',
+                position: { xs: 'relative', sm: 'inherit' },
               }}
             >
               <ModalContext.Provider value={{ zoomed, setZoomed }}>
-                <Image entry={entry} />
+                <Image entry={entry} key={entry.slug} />
               </ModalContext.Provider>
             </Box>
 
@@ -164,7 +228,7 @@ export default function GalleryModal() {
                   maxHeight: '100vh',
                 }}
               >
-                <ImageDetails entry={entry} />
+                <ImageDetails entry={entry} key={entry.slug} />
               </Box>
             )}
           </Box>
@@ -186,27 +250,49 @@ function Image({ entry }: { entry: ImageItem }) {
     : entry.uri;
 
   return (
-    <motion.img
-      className={ctx.zoomed ? 'image-zoomed' : 'image'}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.2 }}
-      sizes={sizes}
-      srcSet={entry.sizes ? srcSet : undefined}
-      src={entry.sizes ? entry.sizes.full : entry.uri}
-      alt={entry.title}
-      loading="eager"
-      width={entry.size.width}
-      height={entry.size.height}
-      tabIndex={0}
-      onClick={() => ctx.setZoomed(!ctx.zoomed)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          ctx.setZoomed(!ctx.zoomed);
-        }
-      }}
-    />
+    <>
+      <motion.img
+        className={ctx.zoomed ? 'image-zoomed' : 'image'}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        sizes={sizes}
+        srcSet={entry.sizes ? srcSet : undefined}
+        src={entry.sizes ? entry.sizes.full : entry.uri}
+        alt={entry.title}
+        loading="eager"
+        width={entry.size.width}
+        height={entry.size.height}
+        tabIndex={0}
+        onClick={() => ctx.setZoomed(!ctx.zoomed)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            ctx.setZoomed(!ctx.zoomed);
+          }
+        }}
+      />
+      {entry.nextSlug && slugToImageData.get(entry.nextSlug)?.sizes?.full && (
+        <img
+          key={entry.nextSlug}
+          src={slugToImageData.get(entry.nextSlug)!.sizes!.full}
+          style={{ display: 'none' }}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="low"
+        />
+      )}
+      {entry.prevSlug && slugToImageData.get(entry.prevSlug)?.sizes?.full && (
+        <img
+          key={entry.prevSlug}
+          src={slugToImageData.get(entry.prevSlug)!.sizes!.full}
+          style={{ display: 'none' }}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="low"
+        />
+      )}
+    </>
   );
 }
 

@@ -231,7 +231,6 @@ Modal and gallery controls are designed to work for keyboard and screen-reader u
 - **`GalleryModal.tsx`**: Focused viewer with navigation.
 - **`Playlist.tsx`**: Ordered playback controls.
 - **`data.ts` / `data-blur.ts`**: Content and placeholders.
-- **`assets/`**: Static media referenced by data.
 
 ## Future Enhancements
 
