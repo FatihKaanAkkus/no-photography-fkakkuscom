@@ -69,8 +69,8 @@ export default function GalleryModal() {
       <AnimatePresence>
         <motion.div
           key={entry.slug}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, filter: 'brightness(22%)' }}
+          animate={{ opacity: 1, filter: 'brightness(100%)' }}
           exit={{ opacity: 0 }}
           transition={{ duration: 3, delay: 0.3 }}
           style={{
@@ -94,7 +94,7 @@ export default function GalleryModal() {
           backdrop: {
             sx: {
               backgroundColor: 'transparent',
-              backdropFilter: 'blur(44px) brightness(25%)',
+              backdropFilter: 'blur(44px) brightness(22%)',
             },
           },
         }}
@@ -399,7 +399,7 @@ const overlayBackdropSx: MotionStyle = {
   right: 0,
   bottom: 0,
   left: 0,
-  backgroundColor: '#242424',
+  backgroundColor: '#121212',
 };
 
 const overlayButtonSx: SxProps<Theme> = {
