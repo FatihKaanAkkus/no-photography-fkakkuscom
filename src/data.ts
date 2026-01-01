@@ -266,6 +266,29 @@ export const imgGroup1: GalleryItems = [
 
 export const imgGroup2: GalleryItems = [
   {
+    title: 'Red Portal Through Feelings',
+    slug: 'red-portal-through-feelings',
+    uri: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings.jpg?ver=1',
+    sizes: {
+      xs: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings-w_300.jpg',
+      sm: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings-w_450.jpg',
+      md: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings-w_600.jpg',
+      lg: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings-w_768.jpg',
+      xl: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings-w_1000.jpg',
+      full: 'https://d3fo8poitgfhx4.cloudfront.net/photos/red-portal-through-feelings.jpg?ver=1',
+    },
+    size: { width: 2000, height: 3000, aspect: Math.floor(2000 / 3000) },
+    exif: {
+      camera: 'FUJIFILM X-S10',
+      lens: 'FUJINON XF 23mm F2.8',
+      aperture: 'f/2.8',
+      exposureTime: '1/30 sec',
+      iso: 'ISO-1600',
+      exposureComp: '0 EV',
+      focalLength: '23mm',
+    },
+  },
+  {
     title: 'Crane Sunset Skyline',
     slug: 'crane-sunset-skyline',
     uri: 'https://d3fo8poitgfhx4.cloudfront.net/photos/crane-sunset-skyline.jpg?ver=1',
